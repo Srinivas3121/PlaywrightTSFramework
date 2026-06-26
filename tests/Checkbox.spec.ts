@@ -1,28 +1,24 @@
 import { test } from '@playwright/test';
 import { CheckboxPage } from '../pages/CheckboxPage';
 
-test('Select Sunday Checkbox', async ({ page }) => {
+test.describe('Checkbox Functionality', () => {
 
-    const checkboxPage = new CheckboxPage(page);
-    await checkboxPage.navigate();
-    await checkboxPage.selectDay('Sunday');
-    await checkboxPage.verifyDaySelected('Sunday');
-});
+    let checkboxPage: CheckboxPage;
 
-test('Select Multiple Checkboxes', async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
+        checkboxPage = new CheckboxPage(page);
+        await checkboxPage.navigate();
+    });
 
-    const checkboxPage = new CheckboxPage(page);
+    test('Select Sunday Checkbox', async () => {
+        await checkboxPage.selectDay('Sunday');
+        await checkboxPage.verifyDaySelected('Sunday');
 
-    await checkboxPage.navigate();
+    });
 
-    const days = [
-        'Sunday',
-        'Tuesday',
-        'Friday'
-    ];
-
-    await checkboxPage.selectDays(days);
-
-    await checkboxPage.verifyDaysSelected(days);
-
+    test('Select Multiple Checkboxes', async () => {
+        const days = ['Sunday','Tuesday','Friday'];
+        await checkboxPage.selectDays(days);
+        await checkboxPage.verifyDaysSelected(days);
+    });
 });
