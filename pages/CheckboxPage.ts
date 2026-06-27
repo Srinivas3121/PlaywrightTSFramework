@@ -26,8 +26,7 @@ export class CheckboxPage {
 
     async verifyDaysSelected(days: string[]) {
         for (const day of days) {
-            await expect(this.page.locator(`#${day.toLowerCase()}`)
-            ).toBeChecked();
+            await expect(this.page.locator(`#${day.toLowerCase()}`)).toBeChecked();
         }
     }
 }
