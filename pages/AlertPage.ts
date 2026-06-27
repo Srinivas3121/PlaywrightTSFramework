@@ -28,23 +28,22 @@ export class AlertPage {
     }
 
     async dismissConfirmationAlert() {
-    this.page.on('dialog', async dialog => {
-        console.log(dialog.message());
-        await dialog.dismiss();
-    });
-    await this.page.locator('#confirmBtn').click();
+        this.page.on('dialog', async dialog => {
+            console.log(dialog.message());
+            await dialog.dismiss();
+        });
+        await this.page.locator('#confirmBtn').click();
     }
 
     async handlePromptAlert() {
-    this.page.on('dialog', async dialog => {
-        console.log(dialog.message());
-        await dialog.accept('Srinivas');
-    });
-    await this.page.locator('#promptBtn').click();
+        this.page.on('dialog', async dialog => {
+            console.log(dialog.message());
+            await dialog.accept('Srinivas');
+        });
+        await this.page.locator('#promptBtn').click();
     }
 
     async verifyPromptMessage() {
-    await expect(this.confirmResult)
-        .toContainText('Srinivas');
+        await expect(this.confirmResult).toContainText('Srinivas');
     }
 }

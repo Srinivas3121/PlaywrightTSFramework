@@ -13,7 +13,6 @@ test.describe('Checkbox Functionality', () => {
     test('Select Sunday Checkbox', async () => {
         await checkboxPage.selectDay('Sunday');
         await checkboxPage.verifyDaySelected('Sunday');
-
     });
 
     test('Select Multiple Checkboxes', async () => {
